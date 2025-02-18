@@ -45,3 +45,5 @@ class Player {
         this.velocity = this.maxSpeed;
     }
 }
+
+export { Player };
