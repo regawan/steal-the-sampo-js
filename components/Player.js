@@ -1,25 +1,44 @@
+import { PlayerIdleState, PlayerMovingLeftState, PlayerMovingRightState } from './State.js';
+
+// Start position for player is in the middle of the canvas
+const startPosition = (canvas, width, height) => ({
+    x: canvas.width / 2 - width / 2,
+    y: canvas.height / 2 - height / 2
+});
+
 class Player {
     constructor(canvas) {
+        // Properties
         this.canvas = canvas;
         this.width = 50;
         this.height = 100;
-
-        // Center the player
-        this.position = {
-        x: this.canvas.width / 2 - this.width / 2,
-        y: this.canvas.height / 2 - this.height / 2
-        };
-
+        this.position = startPosition(this.canvas, this.width, this.height);
         this.velocity = 0;
-        this.maxSpeed = 5;
+        this.moveSpeed = 5;
+
+        // States
+        this.states = {
+            idle: new PlayerIdleState(this),
+            movingLeft: new PlayerMovingLeftState(this),
+            movingRight: new PlayerMovingRightState(this)
+        };
+        this.currentState = this.states.idle;
+        this.currentState.enter();
     }
-    
+
     reset() {
-        this.position = {
-        x: this.canvas.width / 2 - this.width / 2,
-        y: this.canvas.height - this.height - 10
-        };
+        this.position = startPosition(this.canvas, this.width, this.height);
         this.velocity = 0;
+        this.setState('idle');
+    }
+
+    setState(state) {
+        this.currentState = this.states[state];
+        this.currentState.enter();
+    }
+
+    handleInput(input) {
+        this.currentState.handleInput(input);
     }
     
     update(deltaTime) {
@@ -33,17 +52,11 @@ class Player {
     }
     
     render(context) {
-        context.fillStyle = '#a96600';
+        context.fillStyle = '#884204';
         context.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
-    
-    moveLeft() {
-        this.velocity = -this.maxSpeed;
-    }
-    
-    moveRight() {
-        this.velocity = this.maxSpeed;
-    }
 }
+
+export { Player };
 
 export { Player };

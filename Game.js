@@ -5,8 +5,25 @@ class Game {
     this.canvas = canvas;
     this.context = canvas.getContext('2d');
     this.player = new Player(this.canvas);
+
+    window.addEventListener('keydown', (event) => this.handleInput(event, true));
+    window.addEventListener('keyup', (event) => this.handleInput(event, false));
   }
 
+  eventHandler(event, isKeyDown) {
+    if (isKeyDown) {
+      if (event.key === 'ArrowLeft') {
+        this.player.handleInput('left');
+      } else if (event.key === 'ArrowRight') {
+        this.player.handleInput('right');
+      }
+    } else {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        this.player.handleInput('stop');
+      }
+    }
+  }
+  
   reset() {
     this.player.reset();
   }
