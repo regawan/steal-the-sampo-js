@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steal the Sampo</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+
+        function resizeCanvas() {
+            canvas.width = 0.5*window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        // Call resizeCanvas initially and on window resize
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+    </script>
+    <script type="module" src="game-loop.js"></script>
+</body>
+</html>
+
