@@ -6,8 +6,8 @@ class Game {
     this.context = canvas.getContext('2d');
     this.player = new Player(this.canvas);
 
-    window.addEventListener('keydown', (event) => this.handleInput(event, true));
-    window.addEventListener('keyup', (event) => this.handleInput(event, false));
+    window.addEventListener('keydown', (event) => this.eventHandler(event, true));
+    window.addEventListener('keyup', (event) => this.eventHandler(event, false));
   }
 
   eventHandler(event, isKeyDown) {
@@ -23,7 +23,7 @@ class Game {
       }
     }
   }
-  
+
   reset() {
     this.player.reset();
   }
