@@ -6,19 +6,29 @@ class Game {
     this.context = canvas.getContext('2d');
     this.player = new Player(this.canvas);
 
-    window.addEventListener('keydown', (event) => this.eventHandler(event, true));
-    window.addEventListener('keyup', (event) => this.eventHandler(event, false));
+    window.addEventListener('keydown', (event) => this.handleKeyDown(event));
   }
 
-  eventHandler(event, isKeyDown) {
-    if (isKeyDown) {
-      if (event.key === 'ArrowLeft') {
-        this.player.handleInput('left');
-      } else if (event.key === 'ArrowRight') {
-        this.player.handleInput('right');
-      }
+  handleKeyDown(event) {
+    this.keys.add(event.key);
+    this.updatePlayerState();
+  }
+
+  handleKeyUp(event) {
+    this.keys.delete(event.key);
+    this.updatePlayerState();
+  }
+
+  updatePlayerState() {
+    if (this.keys.has('ArrowLeft') && this.keys.has('ArrowRight')) {
+      // If both keys are pressed, stop the player
+      this.player.handleInput('stop');
+    } else if (this.keys.has('ArrowLeft')) {
+      this.player.handleInput('left');
+    } else if (this.keys.has('ArrowRight')) {
+      this.player.handleInput('right');
     } else {
-        this.player.handleInput('stop');
+      this.player.handleInput('stop');
     }
   }
 
