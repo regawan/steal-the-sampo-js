@@ -5,6 +5,7 @@ class Game {
     this.canvas = canvas;
     this.context = canvas.getContext('2d');
     this.player = new Player(this.canvas);
+    this.keys = new Set(); // Initialize the keys set
 
     window.addEventListener('keydown', (event) => this.handleKeyDown(event));
   }
