@@ -18,9 +18,7 @@ class Game {
         this.player.handleInput('right');
       }
     } else {
-      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
         this.player.handleInput('stop');
-      }
     }
   }
 
