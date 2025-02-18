@@ -8,6 +8,7 @@ class Game {
     this.keys = new Set(); // Initialize the keys set
 
     window.addEventListener('keydown', (event) => this.handleKeyDown(event));
+    window.addEventListener('keyup', (event) => this.handleKeyUp(event));
   }
 
   handleKeyDown(event) {
