@@ -7,19 +7,7 @@
   <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <canvas id="gameCanvas"></canvas>
-    <script>
-        const canvas = document.getElementById('gameCanvas');
-
-        function resizeCanvas() {
-            canvas.width = 0.5*window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        // Call resizeCanvas initially and on window resize
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-    </script>
+    <canvas id="gameCanvas" width="600" height="1200"></canvas>
     <script type="module" src="game-loop.js"></script>
 </body>
 </html>
