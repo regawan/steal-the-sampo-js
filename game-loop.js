@@ -28,7 +28,7 @@ function gameLoop(timestamp) {
   // Move both images upward
   images.forEach(image => {
     image.y += speed * deltaTime;
-    
+
     // If the image moves off the bottom, move it to the top of the other image
     if (image.y >= canvas.height) {
       image.y = -canvas.height + (image.y - canvas.height);  // Wrap around
@@ -36,7 +36,7 @@ function gameLoop(timestamp) {
 
     // Draw the image
     if (img.complete) {
-      ctx.drawImage(img, image.x, image.y, canvas.width, canvas.height);
+      game.context.drawImage(img, image.x, image.y, canvas.width, canvas.height);
     }
   });
 
