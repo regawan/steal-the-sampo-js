@@ -13,7 +13,8 @@ const speed = 0.1;
 
 let images = [
   { x: 0, y: 0 },
-  { x: 0, y: 600 },  // Second image starts right above the first
+  { x: 0, y: 600 },
+  { x: 0, y: 1200 },
 ];
 
 let lastTime = 0;
@@ -22,10 +23,14 @@ function gameLoop(timestamp) {
   const deltaTime = timestamp - lastTime;
   lastTime = timestamp;
 
-  game.update(deltaTime);  // Update game logic
-  game.render();           // Render everything
+  // Update game logic
+  game.update(deltaTime);
 
-  // Move both images upward
+  // Start rendering
+  // 1. Clear the canvas
+  game.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+  // 2. Draw images
   images.forEach(image => {
     image.y += speed * deltaTime;
 
@@ -39,6 +44,9 @@ function gameLoop(timestamp) {
       game.context.drawImage(img, image.x, image.y, canvas.width, canvas.height);
     }
   });
+
+  // 3. Draw game objects
+  game.render();
 
   // Request the next frame of the game loop
   requestAnimationFrame(gameLoop);
