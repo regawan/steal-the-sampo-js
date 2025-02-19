@@ -28,7 +28,7 @@ function gameLoop(timestamp) {
 
   // Start rendering
   // 1. Clear the canvas
-  game.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  game.context.clearRect(0, 0, game.canvas.width, game.canvas.height);
 
   // 2. Draw images
   images.forEach(image => {
