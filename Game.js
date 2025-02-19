@@ -2,11 +2,13 @@ import { Player } from './components/Player.js';
 
 class Game {
   constructor(canvas) {
+    // Setup properties
     this.canvas = canvas;
     this.context = canvas.getContext('2d');
     this.player = new Player(this.canvas);
-    this.keys = new Set(); // Initialize the keys set
 
+    // Setup key event listeners
+    this.keys = new Set();
     window.addEventListener('keydown', (event) => this.handleKeyDown(event));
     window.addEventListener('keyup', (event) => this.handleKeyUp(event));
   }
@@ -23,14 +25,15 @@ class Game {
 
   updatePlayerState() {
     if (this.keys.has('ArrowLeft') && this.keys.has('ArrowRight')) {
-      // If both keys are pressed, stop the player
-      this.player.handleInput('stop');
+      // If both keys are pressed, instruct player to stop.
+      this.player.currentState.handleInput('stop');
     } else if (this.keys.has('ArrowLeft')) {
-      this.player.handleInput('left');
+      this.player.currentState.handleInput('left');
     } else if (this.keys.has('ArrowRight')) {
-      this.player.handleInput('right');
+      this.player.currentState.handleInput('right');
     } else {
-      this.player.handleInput('stop');
+      // If no keys are pressed, instruct player to stop.
+      this.player.currentState.handleInput('stop');
     }
   }
 

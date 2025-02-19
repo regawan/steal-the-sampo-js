@@ -36,10 +36,6 @@ class Player {
         this.currentState = this.states[state];
         this.currentState.enter();
     }
-
-    handleInput(input) {
-        this.currentState.handleInput(input);
-    }
     
     update(deltaTime) {
         if (!deltaTime) return;

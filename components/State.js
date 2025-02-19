@@ -1,3 +1,11 @@
+/*
+    STATE MACHINE
+
+    Makes sure player input does the correct thing for the correct state.
+
+    E.g. the player should 
+*/
+
 class State {
     constructor() {}
     
