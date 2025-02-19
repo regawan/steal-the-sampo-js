@@ -9,7 +9,7 @@ img.src = "./images/baltic-sea-pixelated.png";
 
 let imageY = 0;
 const imageX = canvas.width / 2 - 300;
-const speed = 100;
+const speed = 0.1;
 
 let images = [
   { x: 0, y: 0 },
