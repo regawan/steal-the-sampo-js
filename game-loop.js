@@ -5,7 +5,7 @@ const canvas = document.getElementById('gameCanvas');
 const game = new Game(canvas);
 
 const img = new Image();
-img.src = "./images/baltic-sea-pixelated.png";
+img.src = "./images/baltic-sea-pixelated.jpg";
 
 let imageY = 0;
 const imageX = canvas.width / 2 - 300;
